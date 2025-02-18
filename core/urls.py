@@ -21,6 +21,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),  # Browsable API için
     path('api/rest-auth/', include('dj_rest_auth.urls')),  # Güncellenmiş paket kullanımı
+    path('api/rest-auth/registration/', include('dj_rest_auth.registration.urls')),  # Bu satır düzeltildi
     path('api/', include('profiller.api.urls')),
 ]
 

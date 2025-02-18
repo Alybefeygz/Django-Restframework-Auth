@@ -42,6 +42,12 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken', #migrate edilmeli
     'dj_rest_auth',  # Güncellenmiş authentication paketi
+    ### registration end-pointlerimiz için
+    'dj_rest_auth.registration',  # Changed from rest_auth.registration
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'django.contrib.sites',
     'django_extensions',
 ]
 
@@ -53,6 +59,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
 ]
 
 ROOT_URLCONF = 'core.urls'
@@ -133,10 +140,17 @@ MEDIA_URL = "/media/"
 MEDIA_ROOT = 'uploads'
 
 
-
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication',
         'rest_framework.authentication.SessionAuthentication',
     ]
 }
+
+
+### KAYIT İŞLEMLERİ İÇİN GEREKLİ
+SITE_ID = 1 #siteye id vermemiz lazım
+
+
+ACCOUNT_EMAIL_VERIFICATION = 'none' # kayıt esnasında email onayı istiyor muyuz?
+ACCOUNT_EMAIL_REQUIRED = (True,) # kayıt esnasında kullanıcı email adresi vermeli mi?

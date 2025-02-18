@@ -5,16 +5,17 @@ from pprint import pprint
 #{'key': 'ee3f377698dc4bc77431164a085bbc434683154b'}
 
 def client():
-
-    token = 'Token 658eb6542a3da1ba27bc0b77e9415bcda0dea3e1'
-    
-    headers = {
-        'Authorization': token,
+    credentials = {
+        'username': 'normal1',
+        'email': 'normal@gmail.com',
+        'password1': 'N123321!',
+        'password2': 'N123321!'
     }
-    response = requests.get(
-        url = 'http://127.0.0.1:8000/api/kullanici-profilleri/',
-        headers= headers,
-  
+    
+    response = requests.post(
+        url = 'http://127.0.0.1:8000/api/rest-auth/registration/',
+        data = credentials,
+        
     )
     
     print('Status Code:', response.status_code)
